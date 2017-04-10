@@ -17,9 +17,9 @@ namespace DrawbackAuthorizationServer
 
             context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { "*" });
 
-            using (AuthRepository _repo = new AuthRepository())
+            using (var repository = new AuthRepository())
             {
-                IdentityUser user = await _repo.FindUser(context.UserName, context.Password);
+                IdentityUser user = await repository.FindUser(context.UserName, context.Password);
 
                 if (user == null)
                 {
