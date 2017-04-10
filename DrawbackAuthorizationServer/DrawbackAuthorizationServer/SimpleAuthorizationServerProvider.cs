@@ -19,7 +19,7 @@ namespace DrawbackAuthorizationServer
 
             using (var repository = new AuthRepository())
             {
-                IdentityUser user = await repository.FindUser(context.UserName, context.Password);
+                var user = await repository.FindUser(context.UserName, context.Password);
 
                 if (user == null)
                 {
